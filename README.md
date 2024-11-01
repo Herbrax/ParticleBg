@@ -1,12 +1,12 @@
 # ParticlesBg
 
-**Author:** Simo Hakim (me@simohakim.com)
+**Author:** Simo Hakim (Herbrax)
 
 ---
 
 ## Overview
 
-**ParticlesBg** is a React component that generates an animated particle background using HTML5 Canvas. This component creates particles that move dynamically, bounce off the canvas edges, and connect via lines when within a specified proximity, adding a visually engaging effect to your web app.
+**ParticlesBg** is a React component that generates an interactive animated particle background using HTML5 Canvas. This component creates particles that move dynamically, bounce off the canvas edges, and connect via lines when within a specified proximity, adding a visually engaging effect to your web app.
 
 ---
 
@@ -21,8 +21,10 @@ Customize your particle background using the following props:
 - **`particleRadius`** (number): Define the radius of each particle dot.
 - **`lineWidth`** (number): Set the thickness of lines connecting particles.
 - **`proximity`** (number): Maximum distance between particles for line connections.
-- **`maxSpeedX`** (number): Maximum horizontal speed for particles.
-- **`maxSpeedY`** (number): Maximum vertical speed for particles.
+- **`minSpeed`** (number): Minimum speed for particle movement.
+- **`maxSpeed`** (number): Maximum speed for particle movement.
+- **`createOnClick`** (number): Number of particles to create when the canvas is clicked.
+- **`repulse`** (number): Distance from the mouse cursor within which particles will be repelled.
 
 ---
 
@@ -52,7 +54,7 @@ This component is inspired by the "Particleground" library by Jonathan Nicol, wi
 
 MIT License
 
-Copyright (c) [2024] [Simo Hakim]
+Copyright (c) [2024] [Simo Hakim (Herbrax)]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

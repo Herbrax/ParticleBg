@@ -318,12 +318,12 @@ export default ParticlesBg;
 
 /*
  * ParticlesBg
- * Author : Simo Hakim (me@simohakim.com)
+ * Author : Simo Hakim (Herbrax)
  * -----------
  * This component creates an animated particle background using HTML5 Canvas.
  * It renders particles that move, bounce off canvas edges, and connect via lines when they are within a set proximity.
  * 
- * Component Props:
+ * Component Props: 
  * - backgroundColors (string): Sets the background color or gradient of the canvas.
  * - density (number): Controls the number of particles. Higher values increase the number of particles.
  * - dotColor (string): The color of each particle dot.
@@ -331,8 +331,10 @@ export default ParticlesBg;
  * - particleRadius (number): Radius of each particle dot.
  * - lineWidth (number): Width of lines connecting particles.
  * - proximity (number): Maximum distance between particles to form connecting lines.
- * - maxSpeedX (number): Maximum speed in the X direction for each particle.
- * - maxSpeedY (number): Maximum speed in the Y direction for each particle.
+ * - minSpeed (number): Minimum speed for particle movement.
+ * - maxSpeed (number): Maximum speed for particle movement.
+ * - createOnClick (number): Number of particles to create when the canvas is clicked.
+ * - repulse (number): Distance from the mouse cursor within which particles will be repelled.
  * 
  * Usage:
  * - To use this component, render <ParticlesBg /> inside your React app.

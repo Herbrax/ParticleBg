@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ParticlesBg from './ParticlesBg';
-import './App.css';
+import './DemoApp.css';
 
-function App() {
+function DemoApp() {
   const [settings, setSettings] = useState({
     backgroundColors: 'linear-gradient(135deg, #3990e6 0%, #149f7c 100%)',
     density: 150,
@@ -77,22 +77,30 @@ function App() {
           </label>
           
           <label>
-            Background Color 1:
-            <input
-              type="color"
-              value={settings.color1}
-              onChange={(e) => handleChange('color1', e.target.value)}
-            />
+          <div id="swatch">
+                <input
+                  type="color"
+                  value={settings.color1}
+                  onChange={(e) => handleChange('color1', e.target.value)}
+                />
+                <div className="info">
+                  <h4>Background Color 1:</h4>
+                </div>
+              </div>
           </label>
           
           {settings.isGradient && (
             <label>
-              Background Color 2:
-              <input
-                type="color"
-                value={settings.color2}
-                onChange={(e) => handleChange('color2', e.target.value)}
-              />
+              <div id="swatch">
+                <input
+                  type="color"
+                  value={settings.color2}
+                  onChange={(e) => handleChange('color2', e.target.value)}
+                />
+                <div className="info">
+                  <h4>Background Color 2:</h4>
+                </div>
+              </div>
             </label>
           )}
         </div>
@@ -131,22 +139,31 @@ function App() {
           <h2 className="settings-subtitle">Particles</h2>
           
           <label>
-            Dot Color:
-            <input
-              type="color"
-              value={settings.dotColor}
-              onChange={(e) => handleChange('dotColor', e.target.value)}
-            />
+            <div id="swatch">
+              <input
+                type="color"
+                value={settings.dotColor}
+                onChange={(e) => handleChange('dotColor', e.target.value)}
+              />
+              <div className="info">
+                <h4>Dot Color:</h4>
+              </div>
+            </div>
           </label>
 
           <label>
-            Line Color:
-            <input
-              type="color"
-              value={settings.lineColor}
-              onChange={(e) => handleChange('lineColor', e.target.value)}
-            />
+            <div id="swatch">
+              <input
+                type="color"
+                value={settings.lineColor}
+                onChange={(e) => handleChange('lineColor', e.target.value)}
+              />
+              <div className="info">
+                  <h4>Line Color:</h4>
+              </div>
+            </div>
           </label>
+          
 
           <label>
             Particle Radius: {settings.particleRadius}px
@@ -225,4 +242,4 @@ function App() {
   );
 }
 
-export default App;
+export default DemoApp;
