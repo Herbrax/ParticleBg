@@ -8,6 +8,8 @@
 
 **ParticlesBg** is a React component that generates an interactive animated particle background using HTML5 Canvas. This component creates particles that move dynamically, bounce off the canvas edges, and connect via lines when within a specified proximity, adding a visually engaging effect to your web app.
 
+**[Demo Available Here](https://herbrax.github.io/ParticlesBg/)**
+
 ---
 
 ## Component Props
@@ -38,6 +40,30 @@ import ParticlesBg from './ParticlesBg';
 function App() {
   return <ParticlesBg />;
 }
+```
+
+And if you're using it with custom props : 
+
+
+```jsx
+  const [settings, setSettings] = useState({
+    backgroundColors: 'linear-gradient(135deg, #3990e6 0%, #149f7c 100%)',
+    density: 150,
+    dotColor: '#5cbdaa',
+    lineColor: '#5cbdaa',
+    particleRadius: 3,
+    lineWidth: 0.7,
+    proximity: 150,
+    minSpeed: 0.6,
+    maxSpeed: 2,
+    isGradient: true,
+    color1: '#3990e6',
+    color2: '#149f7c',
+    createOnClick: 5,
+    repulse: 100,
+  });
+
+  return <ParticlesBg {...settings} />
 ```
 
 Adjust the props as needed to fine-tune the appearance and movement of particles.
