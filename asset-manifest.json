@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ParticlesBg/static/css/main.51e7ed4f.css",
+    "main.js": "/ParticlesBg/static/js/main.27eaadd4.js",
+    "index.html": "/ParticlesBg/index.html",
+    "main.51e7ed4f.css.map": "/ParticlesBg/static/css/main.51e7ed4f.css.map",
+    "main.27eaadd4.js.map": "/ParticlesBg/static/js/main.27eaadd4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.51e7ed4f.css",
+    "static/js/main.27eaadd4.js"
+  ]
+}
