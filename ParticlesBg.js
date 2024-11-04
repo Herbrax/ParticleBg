@@ -12,6 +12,7 @@ const ParticlesBg = ({
   maxSpeed = 0.6,
   createOnClick = 0,
   repulse = 0,
+  zIndex = 0,
 }) => {
   const canvasRef = useRef(null);
   const particles = useRef([]);
@@ -165,7 +166,8 @@ const ParticlesBg = ({
       left: 0, 
       width: '100%', 
       height: '100%',
-      pointerEvents: 'none'
+      pointerEvents: 'none',
+      zIndex: zIndex,
     }}>
       <canvas 
         ref={canvasRef} 
@@ -280,66 +282,25 @@ class Particle {
   }
 
   draw(ctx, particles, options) {
-    // Draw particle
+    // Draw the particle
     ctx.fillStyle = options.dotColor;
     ctx.beginPath();
-    ctx.arc(this.position.x, this.position.y, options.particleRadius, 0, Math.PI * 2);
+    ctx.arc(this.position.x, this.position.y, options.particleRadius, 0, Math.PI * 2, false);
     ctx.fill();
 
-    // Draw connections
-    ctx.strokeStyle = options.lineColor;
-    ctx.lineWidth = options.lineWidth;
-    
-    for (let i = 0; i < particles.length; i++) {
-      const other = particles[i];
-      if (other === this) continue;
-      
-      const dx = this.position.x - other.position.x;
-      const dy = this.position.y - other.position.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
+    // Draw lines between particles
+    particles.forEach((other) => {
+      const distance = Math.hypot(other.position.x - this.position.x, other.position.y - this.position.y);
       if (distance < options.proximity) {
-        // Adjust line opacity based on distance
-        const opacity = 1 - (distance / options.proximity);
-        ctx.globalAlpha = opacity;
-        
+        ctx.strokeStyle = options.lineColor;
+        ctx.lineWidth = options.lineWidth;
         ctx.beginPath();
         ctx.moveTo(this.position.x, this.position.y);
         ctx.lineTo(other.position.x, other.position.y);
         ctx.stroke();
-        
-        ctx.globalAlpha = 1; // Reset opacity
       }
-    }
+    });
   }
 }
 
 export default ParticlesBg;
-
-/*
- * ParticlesBg
- * Author : Simo Hakim (Herbrax)
- * -----------
- * This component creates an animated particle background using HTML5 Canvas.
- * It renders particles that move, bounce off canvas edges, and connect via lines when they are within a set proximity.
- * 
- * Component Props: 
- * - backgroundColors (string): Sets the background color or gradient of the canvas.
- * - density (number): Controls the number of particles. Higher values increase the number of particles.
- * - dotColor (string): The color of each particle dot.
- * - lineColor (string): The color of the lines that connect particles within the proximity range.
- * - particleRadius (number): Radius of each particle dot.
- * - lineWidth (number): Width of lines connecting particles.
- * - proximity (number): Maximum distance between particles to form connecting lines.
- * - minSpeed (number): Minimum speed for particle movement.
- * - maxSpeed (number): Maximum speed for particle movement.
- * - createOnClick (number): Number of particles to create when the canvas is clicked.
- * - repulse (number): Distance from the mouse cursor within which particles will be repelled.
- * 
- * Usage:
- * - To use this component, render <ParticlesBg /> inside your React app.
- * - Adjust props as desired to control the appearance and behavior of the particle system.
- * 
- * This component is inspired by the "Particleground" library by Jonathan Nicol, 
- * with added customization and a React-oriented design.
- */
